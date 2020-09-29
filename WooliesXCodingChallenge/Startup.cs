@@ -1,22 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using WooliesXCodingChallenge.Models;
 using WooliesXCodingChallenge.Services;
-using Azure.Identity;
-using Azure.Security.KeyVault.Secrets;
-using Azure.Core;
-using System.Net.Http;
 
 namespace WooliesXCodingChallenge
 {
@@ -37,6 +26,7 @@ namespace WooliesXCodingChallenge
             services.AddControllers();
             services.AddHttpClient();
             services.AddScoped<IResourceService, ResourceService>();
+            services.AddScoped<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

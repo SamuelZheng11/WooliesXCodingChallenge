@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WooliesXCodingChallenge.Models;
-using WooliesXCodingChallenge.Services;
 
 namespace WooliesXCodingChallenge.Controllers
 {
@@ -30,6 +23,7 @@ namespace WooliesXCodingChallenge.Controllers
         {
             // use a dictionary for constant access of product prices & number of items left in the cart
             decimal minimumTrolleyCost = 0;
+            // variable used to quickly identify if there are any items remaining in the trolley (small optimisation for when a trolley only has specials in it)
             float totalRemainingItemsInCart = 0;
             trolley.Quantities.ForEach(product => {
                 totalRemainingItemsInCart += product.Quantity;
@@ -47,11 +41,14 @@ namespace WooliesXCodingChallenge.Controllers
                     totalRemainingItemsInCart -= product.Quantity;
                     itemsRemainingInCart[product.Name] -= product.Quantity;
                 }
+                // perform resuffle of the savings on the speicals in the event that it affects the lowest trolley total
                 minimumTrolleyCost += specialToApply.Total;
                 SortSpecials(trolley.Specials, costForProducts);
                 specialToApply = GetSpecialToApply(trolley.Specials, itemsRemainingInCart);
             }
 
+
+            // We cannot apply anymore specials to the cart so we need to add up the regular prices of any remaining items in the cart
             if (totalRemainingItemsInCart != 0)
             {
                 foreach (KeyValuePair<string, float> product in itemsRemainingInCart.ToArray()) 
@@ -77,6 +74,7 @@ namespace WooliesXCodingChallenge.Controllers
             return costWithoutSpecial - special.Total;
         }
 
+        // determine which special should be applied if no specials can be applied it will return null signaling that we cannot apply any more specials
         private Special GetSpecialToApply(List<Special> specials, Dictionary<string, float> itemsRemainingInCart) 
         {
             foreach (Special special in specials)
@@ -88,6 +86,7 @@ namespace WooliesXCodingChallenge.Controllers
             return null;
         }
 
+        // determine if a special can be applied with the remaining items in the trolley
         private bool CanApplySpecial(Special special, Dictionary<string, float> itemsRemainingInCart) 
         {
             foreach (Product product in special.Quantities)
