@@ -46,7 +46,7 @@ On multiple passes analysing the algorithm there was the possibility that a less
 Currenty this project does not have logging or unit/integration tests, Given more time TDD could have been perfomred and different levels of logging could have also been setup, but due to the time contraints I was not able to do this.
 
 ## Token and URL storage
-Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However I experienced time constraints and connectivity issue with accessing the KeyVault, and therefore have stored them in the repository
+Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However due to time constraints and connectivity issue I had with the KeyVault, they were stored in the repository
 
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
