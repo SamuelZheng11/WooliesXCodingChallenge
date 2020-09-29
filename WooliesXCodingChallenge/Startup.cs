@@ -23,7 +23,6 @@ namespace WooliesXCodingChallenge
             services.AddHttpClient();
             services.AddSingleton<IResourceService, ResourceService>();
             services.AddSingleton<IUserService, UserService>();
-            services.AddLogging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

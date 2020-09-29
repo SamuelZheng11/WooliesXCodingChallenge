@@ -12,13 +12,6 @@ namespace WooliesXCodingChallenge.Controllers
     [ApiController]
     public class TrolleyTotalController : ControllerBase
     {
-        private readonly ILogger _logger;
-
-        public TrolleyTotalController(ILogger logger)
-        {
-            _logger = logger;
-        }
-
         // I will document my thought process here, I believe that is problem will require an `interpreter` like pattern
         // I can see that there are specials added to a trolley and a limited number of purchases for each item, my initial thoughts was to implement more of a `greedy` algoritm
         // First process the savings I can make from each special (IE if I have 2 cans of coke and there is a 2 for 1 deal I would save $1 if I used the special)
@@ -30,7 +23,6 @@ namespace WooliesXCodingChallenge.Controllers
         [HttpPost]
         public async Task<decimal> GetTrolleyTotal([FromBody] Trolley trolley)
         {
-            _logger.LogDebug(String.Format("Calculating Lowest Trolley Cost with {0}", trolley));
             // use a dictionary for constant access of product prices & number of items left in the cart
             decimal minimumTrolleyCost = 0;
             // variable used to quickly identify if there are any items remaining in the trolley (small optimisation for when a trolley only has specials in it)
@@ -57,7 +49,6 @@ namespace WooliesXCodingChallenge.Controllers
                 specialToApply = GetSpecialToApply(trolley.Specials, itemsRemainingInCart);
             }
 
-            _logger.LogDebug(String.Format("Algorithm expects the cost of the most `optimal` specials applied to be {0}", minimumTrolleyCost));
 
             // We cannot apply anymore specials to the cart so we need to add up the regular prices of any remaining items in the cart
             if (totalRemainingItemsInCart != 0)
@@ -71,7 +62,6 @@ namespace WooliesXCodingChallenge.Controllers
                 }
             }
 
-            _logger.LogDebug(String.Format("Algorithm expects the lowest cost to be {0}", minimumTrolleyCost));
             return await Task.FromResult(minimumTrolleyCost);
         }
 

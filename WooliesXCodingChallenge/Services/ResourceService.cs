@@ -11,11 +11,9 @@ namespace WooliesXCodingChallenge.Services
     public class ResourceService : IResourceService
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly ILogger _logger;
 
-        public ResourceService(IHttpClientFactory httpClientFactory, ILogger logger) {
+        public ResourceService(IHttpClientFactory httpClientFactory) {
             _httpClientFactory = httpClientFactory;
-            _logger = logger;
         }
 
         public async Task<ActionResult<List<Product>>> GetProducts()
@@ -31,8 +29,7 @@ namespace WooliesXCodingChallenge.Services
                 }
             }
 
-            _logger.LogError(String.Format("Response from the products endpoint returned code: \"{0}\" with error: \"{1}\"", response.StatusCode, response.Content.ReadAsStringAsync()));
-            throw new HttpRequestException();
+            throw new HttpRequestException(String.Format("Response from the products endpoint returned code: \"{0}\" with error: \"{1}\"", response.StatusCode, response.Content.ReadAsStringAsync()));
         }
 
         public async Task<ActionResult<List<ShopperHistory>>> GetShopperHistory()
@@ -51,8 +48,7 @@ namespace WooliesXCodingChallenge.Services
                 }
             }
 
-            _logger.LogError(String.Format("Response from the shopperHistory endpoint returned code: \"{0}\" with error: \"{1}\"", response.StatusCode, response.Content.ReadAsStringAsync()));
-            throw new HttpRequestException();
+            throw new HttpRequestException(String.Format("Response from the shopperHistory endpoint returned code: \"{0}\" with error: \"{1}\"", response.StatusCode, response.Content.ReadAsStringAsync()));
         }
     }
 }
