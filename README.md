@@ -1,16 +1,10 @@
 # WooliesXCodingChallenge
 Store the back-end for the WooliesX coding challenge
 
-## Logging and Tests
-Currenty this project does not have logging or unit/integration tests, Given more time TDD could have been perfomred and different levels of logging could have also been setup, but due to the time contraints I was not able to do this.
+## Serverless (FaaS) vs WebApp Deployments
+I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and in this specific case all the HTTP endpoints do not require a database which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
 
-## Token and URL storage
-Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However I experienced time constraints and connectivity issue with accessing the KeyVault, and therefore have stored them in the repository
-
-## FaaS vs Backends
-For simplicity all of the endpoints are located on one resource, However I understand that in certain cases FaaS can be more useful, as we only pay for the time the function is running.
-
-The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it midigating delays for `cold starts`. I would suspect that there wouldn't be too much difference between the two (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
+The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it midigating delays for `cold starts`. I would suspect that there would not be too much difference between deploying as webapps or function (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
 
 ## Execrise Though Processess
 ### Exercise 1
@@ -34,10 +28,10 @@ I have tried my best to use Dictionaries where I can (when I need constant time 
 **Output:** Lowest cost for that trolley
   
 ##### Thoughts
-I thought this problem was very interesting :)\
-Initially my thoughs was to weight each component of the `Specials` so that I could generate a mapping of how heavily each `Special` affected the prices of each Product (and ultimalty by extension the TrolleyTotal)
+I thought this problem was very interesting :) (On later passes I noticed that this could leverage an interperter like pattern to evaluate the lowest trolley price)\
+Initially my thoughs was to start with the base case (where I dont have any specials) where the lowest total is just the sum of all the products in cart. Then I considered one `special`, followed by 2 then 3 to which I came to the realisation that this problem is about which `speical` to apply when.
 
-However for simplicty and as a (moderate solution/first solution) a `greedy` algorithm was used, where at each step we apply the most cost saving `Special` on the Trolley. 
+For simplicty and as a (moderate/first solution) a `greedy` algorithm was used, where at each step we apply the most cost saving `Special` on the Trolley. 
 
 The steps essentially looks like this:
 - Calculate the savings of each `Special`
@@ -47,6 +41,12 @@ The steps essentially looks like this:
 - If not then add up all the remain items and total the trolley amount
 
 On multiple passes analysing the algorithm there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the traveling salesman problem, there would be multiple different states on the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another state tree of `specials` to apply. This could very quickly exceed memory limits so one would probably start to look at more efficent ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
+
+## Logging and Tests
+Currenty this project does not have logging or unit/integration tests, Given more time TDD could have been perfomred and different levels of logging could have also been setup, but due to the time contraints I was not able to do this.
+
+## Token and URL storage
+Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However I experienced time constraints and connectivity issue with accessing the KeyVault, and therefore have stored them in the repository
 
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
