@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 
 namespace WooliesXCodingChallenge.Models
 {
-    public class User
+    public class Product
     {
         public string Name { get; set; }
-        public string Token { get; set; }
+        public float? Price { get; set; }
+        public float? Quantity { get; set; }
+        public long? Popularity { get; set; }
     }
 }

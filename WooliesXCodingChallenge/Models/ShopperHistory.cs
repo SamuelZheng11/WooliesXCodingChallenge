@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WooliesXCodingChallenge.Models
 {
-    public class User
+    public class ShopperHistory
     {
-        public string Name { get; set; }
-        public string Token { get; set; }
+        public long CustomerID { get; set; }
+        public List<Product> products { get; set; }
     }
 }

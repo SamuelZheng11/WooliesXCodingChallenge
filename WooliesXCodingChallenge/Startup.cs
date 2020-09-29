@@ -12,9 +12,11 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using WooliesXCodingChallenge.Models;
+using WooliesXCodingChallenge.Services;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
+using System.Net.Http;
 
 namespace WooliesXCodingChallenge
 {
@@ -33,6 +35,8 @@ namespace WooliesXCodingChallenge
             services.AddDbContext<UserContext>(opt =>
                opt.UseInMemoryDatabase("Users"));
             services.AddControllers();
+            services.AddHttpClient();
+            services.AddScoped<IResourceQueryService, ResourceQueryService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,22 +52,6 @@ namespace WooliesXCodingChallenge
             app.UseRouting();
 
             app.UseAuthorization();
-
-/*            SecretClientOptions options = new SecretClientOptions()
-            {
-                Retry =
-                    {
-                        Delay= TimeSpan.FromSeconds(2),
-                        MaxDelay = TimeSpan.FromSeconds(16),
-                        MaxRetries = 5,
-                        Mode = RetryMode.Exponential
-                     }
-            };
-            var client = new SecretClient(new Uri("https://wooliesxkeyvalue.vault.azure.net/"), new DefaultAzureCredential(), options);
-
-            KeyVaultSecret secret = client.GetSecret("WooliesXSamsToken");
-
-            string secretValue = secret.Value;*/
 
             app.UseEndpoints(endpoints =>
             {
