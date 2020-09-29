@@ -16,7 +16,7 @@ It appears to me that there isn't a need for a DB from the specification (as we 
 In theory one could just hard code it directly in the controller
 
 ### Exercise 2
-**Input:** GET request to https://[FQDN]/api/sort?<QUERY_PARAMETER>="<VALUE>"\
+**Input:** GET request to https://[FQDN]/api/sort?sortOrder="[VALUE]\
 **Output:** The response from <https://<FQDN>/resources/products> and <https://<FQDN>/resources/shopperHistory> ordered by the query param supplied
   
 ##### Thoughts
