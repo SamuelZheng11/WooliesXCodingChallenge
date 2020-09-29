@@ -13,7 +13,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 ## Execrise Though Processess
 ### Exercise 1
 **Input:** GET request to https://[FQDN]/api/user\
-**Output:** { "name": "<NAME>", "token": "<TOKEN>"}
+**Output:** { "name": "<NAME>", "token": "<TOKEN>" }
 
 ##### Thoughts
 It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precausion I have created a service for it just in case\
