@@ -20,8 +20,8 @@ In theory one could just hard code it directly in the controller
 **Output:** The response from <https://<FQDN>/resources/products> and <https://<FQDN>/resources/shopperHistory> ordered by the query param supplied
   
 ##### Thoughts
-Inital ideas was to use the IComparer/Comparer Classes and Interfaces to define the order of which to sort things by, which is what I have done.
-I have tried my best to use Dictionaries where I can (when I need constant time access)
+The idea here was to use the IComparer/Comparer Classes and Interfaces to define the order of which to sort the products by, which is what I have done.
+I have use Dictionaries where I can when I need constant time access
 
 ### Exercise 3
 **Input:** POST request to https://[FQDN]/api/trolleyTotal\
