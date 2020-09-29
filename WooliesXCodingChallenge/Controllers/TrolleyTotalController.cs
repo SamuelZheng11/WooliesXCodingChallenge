@@ -26,15 +26,15 @@ namespace WooliesXCodingChallenge.Controllers
         // On second pass I realised that in cases where the sum of less savings specials can sometimes be greater than the most cost savings special therefore we need to sort the order of 
         // savings each time
         [HttpPost]
-        public double GetTrolleyTotal([FromBody] Trolley trolley)
+        public decimal GetTrolleyTotal([FromBody] Trolley trolley)
         {
             // use a dictionary for constant access of product prices & number of items left in the cart
-            double minimumTrolleyCost = 0;
+            decimal minimumTrolleyCost = 0;
             float totalRemainingItemsInCart = 0;
             trolley.Quantities.ForEach(product => {
                 totalRemainingItemsInCart += product.Quantity;
             });
-            Dictionary<string, double> costForProducts = trolley.Products.ToDictionary(product => product.Name, product => product.Price);
+            Dictionary<string, decimal> costForProducts = trolley.Products.ToDictionary(product => product.Name, product => product.Price);
             Dictionary<string, float> itemsRemainingInCart = trolley.Quantities.ToDictionary(product => product.Name, product => product.Quantity);
 
             // Add up the speical prices and decrement the counters for items in cart
@@ -58,20 +58,20 @@ namespace WooliesXCodingChallenge.Controllers
                 {
                     if (product.Value > 0) 
                     {
-                        minimumTrolleyCost += costForProducts[product.Key] * product.Value;
+                        minimumTrolleyCost += (decimal)costForProducts[product.Key] * (decimal)product.Value;
                     }
                 }
             }
             return minimumTrolleyCost;
         }
 
-        private double GetSpecialSavings(Special special, Dictionary<string, double> costForProducts) 
+        private decimal GetSpecialSavings(Special special, Dictionary<string, decimal> costForProducts) 
         {
-            double costWithoutSpecial = 0;
+            decimal costWithoutSpecial = 0;
 
             foreach (Product product in special.Quantities) 
             {
-                costWithoutSpecial += (double)costForProducts[product.Name] * product.Quantity;
+                costWithoutSpecial += costForProducts[product.Name] * (decimal)product.Quantity;
             }
 
             return costWithoutSpecial - special.Total;
@@ -101,7 +101,7 @@ namespace WooliesXCodingChallenge.Controllers
         }
 
         // sort by savings with most savings first
-        private void SortSpecials(List<Special> specials, Dictionary<string, double> costForProducts) 
+        private void SortSpecials(List<Special> specials, Dictionary<string, decimal> costForProducts) 
         {
             foreach (Special special in specials)
             {

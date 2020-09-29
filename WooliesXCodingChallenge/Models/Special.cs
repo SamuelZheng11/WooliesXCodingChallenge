@@ -8,7 +8,7 @@ namespace WooliesXCodingChallenge.Models
     public class Special
     {
         public List<Product> Quantities { get; set; }
-        public double Total { get; set; }
-        public double? TotalSavings { get; set; }
+        public decimal Total { get; set; }
+        public decimal? TotalSavings { get; set; }
     }
 }
