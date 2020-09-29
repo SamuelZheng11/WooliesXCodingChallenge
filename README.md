@@ -8,7 +8,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 
 ## Assumptions
 - DBs are not needed for servicing requests
-- Requirements was to build an `HTTP API`, It is assumed mean that we are contacting the (RESTful) HTTP API methods and not that we need to contact port 80 (i.e. GET http://)
+- Requirements was to build an `HTTP API`. It is assumed that this means we are contacting a (RESTful) HTTP API method/s and not that we are contacting port 80 (i.e. GET http://)
 
 ## Execrise Though Processess
 ### Exercise 1
