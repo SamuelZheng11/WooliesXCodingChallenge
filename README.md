@@ -6,6 +6,10 @@ I understand that in certain cases FaaS can be more useful as we only pay for th
 
 The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it midigating delays for `cold starts`. I would suspect that there would not be too much difference between deploying as webapps or function (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
 
+## Assumptions
+- DBs are not needed for servicing requests
+- Requirements was to build an `HTTP API`, It is assumed mean that we are contacting the (RESTful) HTTP API methods and not that we need to contact port 80 (i.e. GET http://)
+
 ## Execrise Though Processess
 ### Exercise 1
 **Input:** GET request to https://[FQDN]/api/user\
