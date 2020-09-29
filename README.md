@@ -50,5 +50,5 @@ On multiple passes analysing the algorithm there was the possibility that a less
 
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.
-I know that there may be decisions that people may disagree with and I happy to discuss them and talk about why I made them and have my thought processes change!
+I know that there may be decisions that people may disagree with and I happy to discuss them why I made them and have my thought and thought processes changed!
 
