@@ -8,8 +8,8 @@ namespace WooliesXCodingChallenge.Models
     public class Product
     {
         public string Name { get; set; }
-        public float? Price { get; set; }
-        public float? Quantity { get; set; }
+        public double Price { get; set; }
+        public float Quantity { get; set; }
         public long? Popularity { get; set; }
     }
 }

@@ -17,14 +17,12 @@ namespace WooliesXCodingChallenge.Controllers
     [ApiController]
     public class SortController : ControllerBase
     {
-        private readonly IResourceQueryService _resourceQueryService;
+        private readonly IResourceService _resourceQueryService;
 
-        public SortController(IResourceQueryService resourceQueryService)
+        public SortController(IResourceService resourceQueryService)
         {
             _resourceQueryService = resourceQueryService;
         }
-
-        // GET: api/Users
         [HttpGet]
         public async Task<IList<Product>> GetProducts([FromQuery] string sortOption)
         {
@@ -49,23 +47,22 @@ namespace WooliesXCodingChallenge.Controllers
                     break;
 
                 case "Recommended":
+                    // organise into hashmap/dictionary for quick access of the `popularity` property on the product object
                     List<ShopperHistory> shoppingHistories = (await _resourceQueryService.GetShopperHistory()).Value;
-                    Dictionary<string, int> productDictionary = products.ToDictionary(x => x.Name, x => 0);
+                    // the use of a long here in the event we are looking at thousands of customer orders and the number of orders exceeds the limit for int
+                    Dictionary<string, long> productDictionary = products.ToDictionary(product => product.Name, _ => (long) 0);
                     foreach (ShopperHistory history in shoppingHistories)
                     {
                         foreach(Product product in history.products)
                         {
-                            productDictionary[product.Name] += 1;                            
+                            productDictionary[product.Name] += (long)product.Quantity;                            
                         }
                     }
-
-                    products.Clear();
-                    foreach (KeyValuePair<string, int> keypair in productDictionary)
+                    
+                    // Update optional popularity field for each product so that it can be sorted by that field
+                    foreach (KeyValuePair<string, long> keypair in productDictionary)
                     {
-                        products.Add(new Product() { 
-                            Name = keypair.Key,
-                            Popularity = keypair.Value
-                        });
+                        products.Find(product => product.Name == keypair.Key).Popularity = keypair.Value;
                     }
 
                     comparer = new ProductPopularityComparer();

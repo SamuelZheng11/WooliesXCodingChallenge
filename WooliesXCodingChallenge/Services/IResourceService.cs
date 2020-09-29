@@ -7,7 +7,7 @@ using WooliesXCodingChallenge.Models;
 
 namespace WooliesXCodingChallenge.Services
 {
-    public interface IResourceQueryService
+    public interface IResourceService
     {
         Task<ActionResult<List<Product>>> GetProducts();
         Task<ActionResult<List<ShopperHistory>>> GetShopperHistory();

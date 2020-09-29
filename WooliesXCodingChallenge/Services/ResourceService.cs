@@ -11,13 +11,16 @@ using Azure.Core;
 
 namespace WooliesXCodingChallenge.Services
 {
-    public class ResourceQueryService : IResourceQueryService
+    public class ResourceService : IResourceService
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        public ResourceService(IHttpClientFactory httpClientFactory) {
+            _httpClientFactory = httpClientFactory;
+        }
 
         public async Task<ActionResult<List<Product>>> GetProducts()
         {
-            HttpResponseMessage response = await _httpClientFactory.CreateClient().GetAsync(String.Format("https://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=fb0ffc0c-5a14-4a53-ba2b-d50e93c8fcf9", this.GetSecretToken()));
+            HttpResponseMessage response = await _httpClientFactory.CreateClient().GetAsync("https://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=fb0ffc0c-5a14-4a53-ba2b-d50e93c8fcf9");
             if (response.IsSuccessStatusCode)
             {
                 try { 
@@ -31,7 +34,7 @@ namespace WooliesXCodingChallenge.Services
 
         public async Task<ActionResult<List<ShopperHistory>>> GetShopperHistory()
         {
-            HttpResponseMessage response = await _httpClientFactory.CreateClient().GetAsync(String.Format("https://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=fb0ffc0c-5a14-4a53-ba2b-d50e93c8fcf9", this.GetSecretToken()));
+            HttpResponseMessage response = await _httpClientFactory.CreateClient().GetAsync("https://dev-wooliesx-recruitment.azurewebsites.net/api/resource/shopperHistory?token=fb0ffc0c-5a14-4a53-ba2b-d50e93c8fcf9");
             if (response.IsSuccessStatusCode)
             {
                 try
