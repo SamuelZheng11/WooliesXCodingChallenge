@@ -45,7 +45,6 @@ namespace WooliesXCodingChallenge.Controllers
                 }
                 // perform resuffle of the savings on the speicals in the event that it affects the lowest trolley total
                 minimumTrolleyCost += specialToApply.Total;
-                SortSpecials(trolley.Specials, costForProducts);
                 specialToApply = GetSpecialToApply(trolley.Specials, itemsRemainingInCart);
             }
 
