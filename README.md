@@ -10,7 +10,7 @@ Under normal circumstances the resource URL would have been stored in something 
 ## FaaS vs Backends
 For simplicity all of the endpoints are located on one resource, However I understand that in certain cases FaaS can be more useful, as we only pay for the time the function is running.
 
-The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it so there is no delay for `cold starts`. One would suspect that there wouldn't be too much difference between the two (just different base urls for each of the execise endpoints on a Azure Function based implementation)
+The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it midigating delays for `cold starts`. I would suspect that there wouldn't be too much difference between the two (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
 
 ## Execrise Though Processess
 ### Exercise 1
