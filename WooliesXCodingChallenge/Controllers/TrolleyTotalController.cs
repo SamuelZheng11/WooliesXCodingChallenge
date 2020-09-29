@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using WooliesXCodingChallenge.Models;
+using Microsoft.Extensions.Logging;
 
 namespace WooliesXCodingChallenge.Controllers
 {
@@ -9,6 +12,12 @@ namespace WooliesXCodingChallenge.Controllers
     [ApiController]
     public class TrolleyTotalController : ControllerBase
     {
+        private readonly ILogger _logger;
+
+        public TrolleyTotalController(ILogger logger)
+        {
+            _logger = logger;
+        }
 
         // I will document my thought process here, I believe that is problem will require an `interpreter` like pattern
         // I can see that there are specials added to a trolley and a limited number of purchases for each item, my initial thoughts was to implement more of a `greedy` algoritm
@@ -19,8 +28,9 @@ namespace WooliesXCodingChallenge.Controllers
         // On second pass I realised that in cases where the sum of less savings specials can sometimes be greater than the most cost savings special therefore we need to sort the order of 
         // savings each time
         [HttpPost]
-        public decimal GetTrolleyTotal([FromBody] Trolley trolley)
+        public async Task<decimal> GetTrolleyTotal([FromBody] Trolley trolley)
         {
+            _logger.LogDebug(String.Format("Calculating Lowest Trolley Cost with {0}", trolley));
             // use a dictionary for constant access of product prices & number of items left in the cart
             decimal minimumTrolleyCost = 0;
             // variable used to quickly identify if there are any items remaining in the trolley (small optimisation for when a trolley only has specials in it)
@@ -47,6 +57,7 @@ namespace WooliesXCodingChallenge.Controllers
                 specialToApply = GetSpecialToApply(trolley.Specials, itemsRemainingInCart);
             }
 
+            _logger.LogDebug(String.Format("Algorithm expects the cost of the most `optimal` specials applied to be {0}", minimumTrolleyCost));
 
             // We cannot apply anymore specials to the cart so we need to add up the regular prices of any remaining items in the cart
             if (totalRemainingItemsInCart != 0)
@@ -55,13 +66,16 @@ namespace WooliesXCodingChallenge.Controllers
                 {
                     if (product.Value > 0) 
                     {
-                        minimumTrolleyCost += (decimal)costForProducts[product.Key] * (decimal)product.Value;
+                        minimumTrolleyCost += costForProducts[product.Key] * (decimal)product.Value;
                     }
                 }
             }
-            return minimumTrolleyCost;
+
+            _logger.LogDebug(String.Format("Algorithm expects the lowest cost to be {0}", minimumTrolleyCost));
+            return await Task.FromResult(minimumTrolleyCost);
         }
 
+        // determine how much each you save buy applying a special to your trolley, this is the core part of the algorithm as it helps determine if one should apply the special
         private decimal GetSpecialSavings(Special special, Dictionary<string, decimal> costForProducts) 
         {
             decimal costWithoutSpecial = 0;

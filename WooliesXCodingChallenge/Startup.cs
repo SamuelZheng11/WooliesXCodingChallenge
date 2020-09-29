@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
-using WooliesXCodingChallenge.Models;
 using WooliesXCodingChallenge.Services;
 
 namespace WooliesXCodingChallenge
@@ -21,12 +19,11 @@ namespace WooliesXCodingChallenge
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserContext>(opt =>
-               opt.UseInMemoryDatabase("Users"));
             services.AddControllers();
             services.AddHttpClient();
-            services.AddScoped<IResourceService, ResourceService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddSingleton<IResourceService, ResourceService>();
+            services.AddSingleton<IUserService, UserService>();
+            services.AddLogging();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
