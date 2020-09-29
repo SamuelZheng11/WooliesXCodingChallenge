@@ -29,7 +29,7 @@ I have use Dictionaries where I can when I need constant time access
   
 ##### Thoughts
 I thought this problem was very interesting :) (On later passes I noticed that this could leverage an interperter like pattern to evaluate the lowest trolley price)\
-Initially my thoughs was to start with the base case (where I dont have any specials) where the lowest total is just the sum of all the products in cart. Then I considered one `special`, followed by 2 then 3 to which I came to the realisation that this problem is about which `speical` to apply when.
+Initially my thoughs was to start with the base case (where I dont have any specials) where the lowest total is just the sum of all the products in cart. Then I considered one `special`, followed by two then three to which I came to the realisation that this problem is about which `speical` to apply when.
 
 For simplicty and as a (moderate/first solution) a `greedy` algorithm was used, where at each step we apply the most cost saving `Special` on the Trolley. 
 
