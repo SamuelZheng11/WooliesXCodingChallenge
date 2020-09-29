@@ -18,7 +18,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 **Output:** { "name": "<NAME>", "token": "<TOKEN>"}
 
 ##### Thoughts
-It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precausion I have created a service for it just in case
+It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precausion I have created a service for it just in case\
 In theory one could just hard code it directly in the controller
 
 ### Exercise 2
@@ -34,7 +34,7 @@ I have tried my best to use Dictionaries where I can (when I need constant time 
 **Output:** Lowest cost for that trolley
   
 ##### Thoughts
-I thought this problem was very interesting :)
+I thought this problem was very interesting :)\
 Initially my thoughs was to weight each component of the `Specials` so that I could generate a mapping of how heavily each `Special` affected the prices of each Product (and ultimalty by extension the TrolleyTotal)
 
 However for simplicty and as a (moderate solution/first solution) a `greedy` algorithm was used, where at each step we apply the most cost saving `Special` on the Trolley. 
@@ -49,6 +49,6 @@ The steps essentially looks like this:
 On multiple passes analysing the algorithm there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the traveling salesman problem, there would be multiple different states on the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another state tree of `specials` to apply. This could very quickly exceed memory limits so one would probably start to look at more efficent ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
 
 ## Final Thoughts
-I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.
+I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
 I know that there may be decisions that people may disagree with and I happy to discuss them why I made them and have my thought and thought processes changed!
 
