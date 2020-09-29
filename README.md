@@ -14,24 +14,24 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 
 ## Execrise Though Processess
 ### Exercise 1
-Input: GET request to https://<FQDN>/api/user
-Output: { "name": "<NAME>", "token": "<TOKEN>"}
+**Input:** GET request to https://<FQDN>/api/user
+**Output:** { "name": "<NAME>", "token": "<TOKEN>"}
 
 ##### Thoughts
 It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precausion I have created a service for it just in case
 In theory one could just hard code it directly in the controller
 
 ### Exercise 2
-Input: GET request to https://<FQDN>/api/sort?<QUERY_PARAMETER>="<VALUE>"
-Output: The response from <https://<FQDN>/resources/products> and <https://<FQDN>/resources/shopperHistory> ordered by the query param supplied
+**Input:** GET request to https://<FQDN>/api/sort?<QUERY_PARAMETER>="<VALUE>"
+**Output:** The response from <https://<FQDN>/resources/products> and <https://<FQDN>/resources/shopperHistory> ordered by the query param supplied
   
 ##### Thoughts
 Inital ideas was to use the IComparer/Comparer Classes and Interfaces to define the order of which to sort things by, which is what I have done.
 I have tried my best to use Dictionaries where I can (when I need constant time access)
 
 ### Exercise 3
-Input: POST request to https://<FQDN>/api/trolleyTotal
-Output: Lowest cost for that trolley
+**Input:** POST request to https://<FQDN>/api/trolleyTotal
+**Output:** Lowest cost for that trolley
   
 ##### Thoughts
 I thought this problem was very interesting :)
