@@ -42,8 +42,8 @@ For simplicty and as a (moderate/first solution) a `greedy` algorithm was used, 
 The steps essentially looks like this:
 - Calculate the savings of each `Special`
 - Order `Specials` by ones that gives us the most savings first
-- While I can still apply a `Special`, 
--- Apply the `Special` and remove those items from trolley and add the `Special`'s price to the trolley total
+- While I can still apply a `Special`, \
+-- Apply the `Special` and remove those items from trolley and add the `Special`'s price to the trolley total\
 -- Repeat until there is no `Spcials` that I can apply (this can be true for 0 or more items in the cart)
 - Add up all the remain items in the trolley that are not bound by a `Special` and total the trolley amount
 
