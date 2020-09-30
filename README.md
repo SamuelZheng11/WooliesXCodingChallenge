@@ -19,7 +19,7 @@ The endpoint is set up at https://wooliesxcodingchallenge20200929124301.azureweb
 **Output:** { "name": "<NAME>", "token": "<TOKEN>" }
 
 ##### Thoughts
-It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precaution I have created a service for it just in case\
+It appears to me that there isn't a need for a DB from the specification (as we are just returning a constant `user` (singular)), however just as a precaution I have created a service for it just in case. I suspect that in a normal environment we would need to communicate to a DB to authenticate users, hence the service\
 In theory, one could just hard code it directly in the controller
 
 ### Exercise 2
