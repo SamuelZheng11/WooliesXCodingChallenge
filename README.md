@@ -2,7 +2,7 @@
 Store the back-end artifacts for the WooliesX coding challenge
 
 ## Serverless (FaaS) vs WebApp Deployments
-I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and it appears that all the exercises do not require anything that a Backend supports (IE DBs) which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
+I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and it appears that all the exercises do not require anything that a Backend supports (IE DBs) which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource. (See section on **Microservices**)
 
 The endpoint is set up at https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT> and will be running as long as the account has (free) credit on it, mitigating delays for cold starts. I would suspect that there would not be too much difference between deploying as WebApps or function (at this stage), just different base URLs for each of the exercise endpoints on an Azure Function based implementation
 
@@ -66,7 +66,7 @@ In an Ideal world I would also like to have added a schema validator on each htt
 ## Branching and Merge Strategies
 Under normal development environment, I would **NEVER** push directly onto master, instead creating PRs for each feature change I make (that's why there is a `[JOB_NUMBER]` tag on each of the feature commits).
 
-## Microservices & Cost-Effective Scalability
+## Microservices
 For the purposes of the assessment, I have put everything in one repository, as it makes it easier to see all the artefacts together. In practice (if I didn't use functions) I would have split each exercise into its own domain (each domain has their own service as they are all touching different domains, Ordering, Browsing, Authentication & Authorisation), ensuring that the only time resources are allocated is when that resource needs to be used (i.e. we do not have idle resources for the /api/user endpoint if the system upscales to accommodate high load for /api/trolleyTotal). I would then have an API Gateway (and potentially CDN's) out the front to service different requests, help performance via caching of static data and provide some help with DDOS attacks.
 
 ## Final Thoughts
