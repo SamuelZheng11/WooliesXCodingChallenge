@@ -14,7 +14,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 
 ## Execrise Though Processess
 ### Exercise 1
-**Input:** GET request to https://[FQDN]/api/user\
+**Input:** GET request to `https://[FQDN]/api/user`\
 **Output:** { "name": "<NAME>", "token": "<TOKEN>" }
 
 ##### Thoughts
@@ -22,7 +22,7 @@ It appears to me that there isn't a need for a DB from the specification (as we 
 In theory one could just hard code it directly in the controller
 
 ### Exercise 2
-**Input:** GET request to https://[FQDN]/api/sort?sortOption=[VALUE]\
+**Input:** GET request to `https://[FQDN]/api/sort?sortOption=[VALUE]`\
 **Output:** The response from <https://<FQDN>/resources/products> and <https://<FQDN>/resources/shopperHistory> ordered by the query param supplied
   
 ##### Thoughts
@@ -30,7 +30,7 @@ The idea here was to use the IComparer/Comparer Classes and Interfaces to define
 I have use Dictionaries where I can when I need constant time access
 
 ### Exercise 3
-**Input:** POST request to https://[FQDN]/api/trolleyTotal\
+**Input:** POST request to `https://[FQDN]/api/trolleyTotal`\
 **Output:** Lowest cost for that trolley
   
 ##### Thoughts
