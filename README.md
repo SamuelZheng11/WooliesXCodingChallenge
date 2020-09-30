@@ -54,7 +54,7 @@ On multiple passes analysing the algorithm there was the possibility that a less
 ## Logging and Tests
 Currenty this project does not have logging or unit/integration tests, Given more time TDD could have been perfomred and different levels of logging could have also been setup, but due to the time contraints I was not able to do this.
 
-## Token and URL storage
+## Token and URL Storage
 Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However due to time constraints and connectivity issue I had with the KeyVault, they were stored in the repository
 
 ## API Fault Tolerance
