@@ -45,7 +45,8 @@ The steps essentially looks like this:
 - While I can still apply a `Special`, \
 -- Apply the `Special` and remove those items from trolley and add the `Special`'s price to the trolley total\
 -- Repeat until there is no `Spcials` that I can apply (this can be true for 0 or more items in the cart)
-- Add up all the remain items in the trolley that are not bound by a `Special` and total the trolley amount
+- Add up all the remain items in the trolley that are not bound by a `Special` and total the trolley's total
+- Return the trolleyTotal
 
 On multiple passes analysing the algorithm there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the traveling salesman problem, there would be multiple different states on the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another state tree of `specials` to apply. This could very quickly exceed memory limits so one would probably start to look at more efficent ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
 
