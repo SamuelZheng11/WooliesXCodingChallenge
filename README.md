@@ -1,5 +1,5 @@
 # WooliesXCodingChallenge
-Store the back-end for the WooliesX coding challenge
+Store the back-end artifacts for the WooliesX coding challenge
 
 ## Serverless (FaaS) vs WebApp Deployments
 I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and in this specific case all the HTTP endpoints do not require a database which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
@@ -9,6 +9,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 ## Assumptions
 - DBs are not needed for servicing requests
 - Requirements was to build an `HTTP API`. It is assumed that this means we are contacting a (RESTful) HTTP API method/s and not that we are contacting port 80 (i.e. GET http://)
+- In the interest it is assumed that consumers of the /trolleyTotal API is not intentionally trying to break it (more on this in the **API Fault Tolerance** Section)
 
 ## Execrise Though Processess
 ### Exercise 1
@@ -47,11 +48,15 @@ The steps essentially looks like this:
 
 On multiple passes analysing the algorithm there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the traveling salesman problem, there would be multiple different states on the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another state tree of `specials` to apply. This could very quickly exceed memory limits so one would probably start to look at more efficent ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
 
+# Room for Improvement
 ## Logging and Tests
 Currenty this project does not have logging or unit/integration tests, Given more time TDD could have been perfomred and different levels of logging could have also been setup, but due to the time contraints I was not able to do this.
 
 ## Token and URL storage
 Under normal circumstances the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However due to time constraints and connectivity issue I had with the KeyVault, they were stored in the repository
+
+## API Fault Tolerance
+I would have liked to introduce more error checking on the /trolleyTotal API. Null checks, Negitive values, Use of products in speicals with no price, Items in the trolley which do not have product listing for it, etc. At the time of development I was concerned with solving the immediate issues hence the more traditional approach to development. Under normal circumstances I would have like to plan out the inputs and outputs then develop the endpoints using TDD to cover the previously mentioned cases.
 
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
