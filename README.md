@@ -2,9 +2,9 @@
 Store the back-end artifacts for the WooliesX coding challenge
 
 ## Serverless (FaaS) vs WebApp Deployments
-I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and in this specific case all the HTTP endpoints do not require a database which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
+I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and it appears that all the exercises do not require anything that a Backend supports (IE DBs) which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
 
-The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it midigating delays for `cold starts`. I would suspect that there would not be too much difference between deploying as webapps or function (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
+The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it, midigating delays for `cold starts`. I would suspect that there would not be too much difference between deploying as webapps or function (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
 
 ## Assumptions
 - DBs are not needed for servicing requests
