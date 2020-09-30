@@ -21,8 +21,11 @@ namespace WooliesXCodingChallenge.Controllers
         // On second pass I realised that in cases where the sum of less savings specials can sometimes be greater than the most cost savings special therefore we need to sort the order of 
         // savings each time
         [HttpPost]
-        public async Task<decimal> GetTrolleyTotal([FromBody] Trolley trolley)
+        public async Task<ActionResult<decimal>> GetTrolleyTotal([FromBody] Trolley trolley)
         {
+            if (trolley.Products == null || trolley.Quantities == null || trolley.Specials == null) {
+                return StatusCode(400);
+            }
             // use a dictionary for constant access of product prices & number of items left in the cart
             decimal minimumTrolleyCost = 0;
             // variable used to quickly identify if there are any items remaining in the trolley (small optimisation for when a trolley only has specials in it)
