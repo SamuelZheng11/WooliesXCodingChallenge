@@ -9,7 +9,7 @@ The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azureweb
 ## Assumptions
 - DBs are not needed for servicing requests
 - Requirements was to build an `HTTP API`. It is assumed that this means we are contacting a (RESTful) HTTP API method/s and not that we are contacting port 80 (i.e. GET http://)
-- In the interest of time under assessment conditions it is assumed that consumers of the /trolleyTotal API is not intentionally trying to break it (For what I would have done to support Fault Tolerance, please see the **API Fault Tolerance** Section)
+- In the interest of time under assessment conditions it is assumed that consumers of the /trolleyTotal API is not intentionally trying to break it (For what I would have done to support/account for Fault Tolerance, please see the **API Fault Tolerance** Section)
 - Secert used to contact the resource URL (including the applicant specific token) does not need to be securely store (At least for the first implementation under assessment conditions. Please see **Token and URL storage** for more details and how I would have done it)
 
 ## Execrise Though Processess
