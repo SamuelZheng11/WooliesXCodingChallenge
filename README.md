@@ -63,6 +63,9 @@ I would have liked to introduce more error checking on the /trolleyTotal API. Nu
 ## Branching and Merge Strategies
 Under normal development envrionment I would **NEVER** push directly onto master, instead creating PRs for each feature change I make (thats why there is a `[JOB_NUMBER]` tag on each of the feature commits).
 
+## Microservices & Cost Effective Scaleability
+For the purposes of the assessment I have put everything in one repository, as it makes it makes it easier to see all the artifacts together. In practise (if I didn't use functions) I would have split each execrise into its own domain (each domain has their own service as they are all touching different domains, Ordering, Browsing, Authentication & Authorisation), ensuring that the only time resources are allocated is when that resource needs to be use (i.e. we do not have idle resources for the /api/user endpoint if the system upscales to accomidate high load for /api/trolleyTotal). I would then have an API Gateway (and potentially CDN's) out the front to service different requests, help performace via caching of static data and provide some help with DDOS attacks.
+
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
 I know that there may be decisions that people may disagree with and I happy to discuss them why I made them and have my thought and thought processes changed!
