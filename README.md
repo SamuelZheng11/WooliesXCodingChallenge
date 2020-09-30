@@ -4,13 +4,13 @@ Store the back-end artifacts for the WooliesX coding challenge
 ## Serverless (FaaS) vs WebApp Deployments
 I understand that in certain cases FaaS can be more useful as we only pay for the time the function is running and it appears that all the exercises do not require anything that a Backend supports (IE DBs) which would mean that a function may be more suited. However, for the purposes of keeping the assessment code together and simplicity, the endpoints are located on one resource
 
-The endpoint is setup at `https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT>` and will be running as long as the account has (free) credit on it, midigating delays for `cold starts`. I would suspect that there would not be too much difference between deploying as webapps or function (at this stage), just different base urls for each of the execise endpoints on a Azure Function based implementation
+The endpoint is set up at https://wooliesxcodingchallenge20200929124301.azurewebsites.net/api/<EXCERISE_ENDPOINT> and will be running as long as the account has (free) credit on it, mitigating delays for cold starts. I would suspect that there would not be too much difference between deploying as WebApps or function (at this stage), just different base URLs for each of the exercise endpoints on an Azure Function based implementation
 
 ## Assumptions
 - DBs are not needed for servicing requests
-- Requirements was to build an `HTTP API`. It is assumed that this means we are contacting a (RESTful) HTTP API method/s and not that we are contacting port 80 (i.e. GET http://)
-- In the interest of time under assessment conditions it is assumed that consumers of the /trolleyTotal API is not intentionally trying to break it (For what I would have done to support/account for Fault Tolerance, please see the **API Fault Tolerance** Section)
-- Secert used to contact the resource URL (including the applicant specific token) does not need to be securely store (At least for the first implementation under assessment conditions. Please see **Token and URL storage** for more details and how I would have done it)
+- Requirements was to build an HTTP API. It is assumed that this means we are contacting a (RESTful) HTTP API method/s and not that we are contacting port 80 (i.e. GET http://)
+- In the interest of time under assessment conditions it is assumed that consumers of the /trolleyTotal API is not intentionally trying to break it (For what I would have done to support/account for Fault Tolerance, please see the API Fault Tolerance Section)
+- Secret used to contact the resource URL (including the applicant specific token) does not need to be securely store (At least for the first implementation under assessment conditions. Please see Token and URL storage for more details and how I would have done it)
 
 
 ## Execrise Though Processess
