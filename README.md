@@ -40,16 +40,16 @@ Initially, my thoughts were to start with the base case (where I don't have any 
 
 For simplicity and as a (moderate/first solution) a `greedy` algorithm was used, where at each step we apply the most cost-saving `Special` on the Trolley. 
 
-The steps essentially looks like this:
+The steps essentially look like this:
 - Calculate the savings of each `Special`
-- Order `Specials` by ones that gives us the most savings first
+- Order `Specials` by ones that give us the most savings first
 - While I can still apply a `Special`, \
 -- Apply the `Special` and remove those items from the trolley and add the `Special`'s price to the trolley total\
 -- Repeat until there is no `Specials` that I can apply (this can be true for 0 or more items in the cart)
 - Add up all the remain items in the trolley that are not bound by a `Special` and total the trolley's total
 - Return the trolleyTotal
 
-On multiple passes analysing the algorithm, there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the travelling salesman problem, there would be different nodes one could arrive on in the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another set `specials` to apply moving us further down a level on the state tree (ie applying `Special 1` then `Special 2` could be different from applying `Special 2` then `Special 1`, of which each would be on different branches of the state tree with their own children nodes to traverse). This could very quickly exceed memory limits so one would probably start to look at more efficient ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
+On multiple passes analysing the algorithm, there was the possibility that a lesser total could be reached if we were consistently re-evaluating the sum of `specials` but that would very quickly become a difficult problem. Similar to the branching paths on the state tree of the travelling salesman problem, there would be different nodes one could arrive on in the state tree should we choose to apply `special 1` instead of `special 2`, of which each one of those would have another set `specials` to apply, moving us further down a level on the state tree (ie applying `Special 1` then `Special 2` could be different from applying `Special 2` then `Special 1`, and each would be on different branches in the state tree with their own children nodes to traverse). This could very quickly exceed memory limits so one would probably start to look at more efficient ways of exploring and storing state trees information, like `Branch & Bound Depth First Search` and using a byte[] instead of strings (representation of the state tree)
 
 # Room for Improvement
 ## Logging and Tests
