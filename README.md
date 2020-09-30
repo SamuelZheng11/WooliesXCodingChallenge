@@ -61,7 +61,7 @@ Under normal circumstances the resource URL would have been stored in something 
 I would have liked to introduce more error checking on the /trolleyTotal API. Null checks, Negitive values, Use of products in speicals with no price, Items in the trolley which do not have product listing for it, etc. At the time of development I was concerned with solving the immediate issues hence the more traditional approach to development. Under normal circumstances I would have like to plan out the inputs and outputs then develop the endpoints using TDD to cover the previously mentioned cases.
 
 ## Branching and Merge Strategies
-Under normal development envrionment I would **NEVER** push directly onto master, instead creating PRs for each change I made (thats why you see the [JOB_NUMBER] tag on each of my commits). For the interest of time I would create PRs for each feature change
+Under normal development envrionment I would **NEVER** push directly onto master, instead creating PRs for each feature change I made (thats why you see the [JOB_NUMBER] tag on each of the feature commits).
 
 ## Final Thoughts
 I quite enjoyed this exercise as it gave me the opportunity to test my knowledge of the full process of deploying an application.\
