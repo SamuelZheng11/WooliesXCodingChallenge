@@ -59,7 +59,9 @@ Currently, this project does not have logging or unit/integration tests, Given m
 Under normal circumstances, the resource URL would have been stored in something like Appsettings.json and retrieved from there. Like-wise with the participant `token` on Azure KeyVault. However, due to time constraints and connectivity issue I had with the KeyVault, they were stored in the repository
 
 ## API Fault Tolerance
-I would have liked to introduce more error checking on the /trolleyTotal API. Null checks, Negative values, Use of products in specials with no price, Items in the trolley which do not have product listing for it, etc. At the time of development, I was concerned with solving the immediate issues hence the more traditional approach to development. Under normal circumstances I would have like to plan out the inputs and outputs then develop the endpoints using TDD to cover the previously mentioned cases. (Returning different 4xx responses)
+I would have liked to introduce more error checking on the /trolleyTotal API. Null checks, Negative values, Use of products in specials with no price, Items in the trolley which do not have product listing for it, etc. At the time of development, I was concerned with solving the immediate issues hence the more traditional approach to development. Under normal circumstances I would have like to plan out the inputs and outputs then develop the endpoints using TDD to cover the previously mentioned cases. (Returning different 4xx responses).
+
+In an Ideal world I would also like to have added a schema validator returning code 409 in the event that the payload is malformed.
 
 ## Branching and Merge Strategies
 Under normal development environment, I would **NEVER** push directly onto master, instead creating PRs for each feature change I make (that's why there is a `[JOB_NUMBER]` tag on each of the feature commits).
